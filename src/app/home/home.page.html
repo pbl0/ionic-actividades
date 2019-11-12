@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      EABE 2020
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding ">
+  <ion-item>
+    <ion-label>Nombre</ion-label>
+    <ion-input [(ngModel)]="actividadEditando.nombre"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Fecha y Hora</ion-label>
+    <ion-input [(ngModel)]="actividadEditando.fechaHora"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Ponente</ion-label>
+    <ion-input [(ngModel)]="actividadEditando.ponente"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Aforo</ion-label>
+    <ion-input [(ngModel)]="actividadEditando.aforo"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Direccion</ion-label>
+    <ion-input [(ngModel)]="actividadEditando.direccion"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Localizacion</ion-label>
+    <ion-input [(ngModel)]="actividadEditando.localizacion"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Foto</ion-label>
+    <ion-input [(ngModel)]="actividadEditando.foto"></ion-input>
+  </ion-item>
+
+
+  <ion-button (click)="clicBotonInsertar()">Añadir Actividad</ion-button>
+  <ion-button (click)="clicBotonModificar()">Modificar Actividad</ion-button>
+  <ion-button (click)="clicBotonBorrar()">Borrar Actividad</ion-button>
+</div>
+<h4>Lista de Actividades</h4>
+<ion-list>
+  <ion-item *ngFor="let documentActividad of arrayColeccionActividades" (click)="selecActividad(documentActividad)">
+    <ion-grid>
+      <ion-row>
+        <h2>{{documentActividad.data.nombre}}</h2>
+      </ion-row>
+      <ion-row>
+        <p>{{documentActividad.data.ponente}}</p>
+      </ion-row>
+      <ion-row>
+        <p>{{documentActividad.data.aforo}}</p>
+      </ion-row>
+      <ion-row>
+        <p>{{documentActividad.data.fechaHora}}</p>
+      </ion-row>
+      <ion-row>
+        <p>{{documentActividad.data.direccion}}</p>
+      </ion-row>
+      <ion-row>
+        <p>{{documentActividad.data.localizacion}}</p>
+      </ion-row>
+      <ion-row>
+        <p>{{documentActividad.data.foto}}</p>
+      </ion-row>
+    </ion-grid>
+  </ion-item>
+</ion-list>
+</ion-content>
