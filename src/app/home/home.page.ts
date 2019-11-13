@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
+import { Router } from "@angular/router";
 import { FirestoreService } from '../firestore.service';
 import { Actividad } from '../actividad';
+
 
 @Component({
 	selector: 'app-home',
@@ -17,11 +19,18 @@ export class HomePage {
 	idActividadSelec: string;
 
 
-	constructor(private firestoreService: FirestoreService) {
+	constructor(private firestoreService: FirestoreService,
+				private router: Router		
+		) {
 
 		// Crear una actividad vacía
 		this.actividadEditando = {} as Actividad;
 		this.obtenerListaActividades();
+	}
+
+	navigateToActividad(id) {
+		this.router.navigate(["/actividad/" + id]);
+
 	}
 
 	obtenerListaActividades() {
@@ -46,7 +55,7 @@ export class HomePage {
 		});
 	}
 
-	
+
 	selecActividad(actividadSelec) {
 		console.log("Actividad seleccionada: ");
 		console.log(actividadSelec);
@@ -58,16 +67,16 @@ export class HomePage {
 		this.actividadEditando.direccion = actividadSelec.data.direccion;
 		this.actividadEditando.localizacion = actividadSelec.data.localizacion;
 		this.actividadEditando.foto = actividadSelec.data.foto;
-	  }
-	
-	  clicBotonBorrar() {
+	}
+
+	clicBotonBorrar() {
 		this.firestoreService.borrar("actividades", this.idActividadSelec).then(() => {
-		  // Actualizar la lista completa
-		  this.obtenerListaActividades();
-		  // Limpiar datos de pantalla
-		  this.actividadEditando = {} as Actividad;
+			// Actualizar la lista completa
+			this.obtenerListaActividades();
+			// Limpiar datos de pantalla
+			this.actividadEditando = {} as Actividad;
 		})
-	  }
+	}
 
 }
 
