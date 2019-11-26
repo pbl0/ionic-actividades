@@ -5,5 +5,6 @@ export interface Actividad {
     aforo: number,
     foto: string,
     direccion: string,
-    localizacion: string
+    localizacion: string,
+    tipo: string
 }

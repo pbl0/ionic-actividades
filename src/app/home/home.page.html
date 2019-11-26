@@ -11,7 +11,7 @@
 
 <ion-list>
     <ion-list-header>
-        Actividades
+        Actividades:
       </ion-list-header>
 
       <ion-item  *ngFor="let documentActividad of arrayColeccionActividades" (click)="navigateToActividad(documentActividad.id)">
@@ -19,38 +19,21 @@
           <img src="{{documentActividad.data.foto}}">
         </ion-avatar>
         <ion-label>
-          <h2>{{documentActividad.data.fechaHora}} - {{documentActividad.data.nombre}}</h2>
+          <h2>{{documentActividad.data.nombre}}</h2>
           <h3>{{documentActividad.data.ponente}}</h3>
           <p>Aforo: {{documentActividad.data.aforo}}</p>
+          <p>{{documentActividad.data.fechaHora}}</p>
           <p>Dirección: {{documentActividad.data.direccion}} ({{documentActividad.data.localizacion}})</p>
 
         </ion-label>
       </ion-item>
-  <!-- <ion-item *ngFor="let documentActividad of arrayColeccionActividades" (click)="navigateToActividad(documentActividad.id)">
-    <ion-grid>
-      <ion-row>
-        <h2>{{documentActividad.data.nombre}}</h2>
-      </ion-row>
-      <ion-row>
-        <p>Ponente: {{documentActividad.data.ponente}}</p>
-      </ion-row>
-      <ion-row>
-        <p>Aforo: {{documentActividad.data.aforo}}</p>
-      </ion-row>
-      <ion-row>
-        <p>Fecha: {{documentActividad.data.fechaHora}}</p>
-      </ion-row>
-      <ion-row>
-        <p>Dirección: {{documentActividad.data.direccion}}</p>
-      </ion-row>
-      <ion-row>
-        <p>Localización {{documentActividad.data.localizacion}}</p>
-      </ion-row>
-      <ion-row>
-        <p>Foto: {{documentActividad.data.foto}}</p>
-      </ion-row>
-    </ion-grid>
-  </ion-item> -->
 </ion-list>
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button (click)="navigateToActividad('new')" color="primary">
+      <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+
+
 
 </ion-content>

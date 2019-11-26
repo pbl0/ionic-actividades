@@ -1,45 +1,66 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>actividad</ion-title>
-  </ion-toolbar>
+	<ion-toolbar>
+		<ion-title>actividad</ion-title>
+		<ion-buttons slot="start">
+			<ion-button *ngIf="id == 'new'" (click)="clicBotonInsertar()"><ion-icon name="arrow-round-back"></ion-icon></ion-button>
+			<ion-button *ngIf="id != 'new'" (click)="clicBotonModificar()"><ion-icon name="arrow-round-back"></ion-icon></ion-button>
+		</ion-buttons>
+		<ion-buttons slot="end">
+			<ion-button (click)="clicBotonBorrar()"><ion-icon name="trash"></ion-icon></ion-button>
+			
+		</ion-buttons>
+	</ion-toolbar>
 </ion-header>
 
-<ion-content>
- 
- <div class="ion-padding ">
-  <p>Id: {{id}}</p>
-  <ion-item>
-    <ion-label>Nombre</ion-label>
-    <ion-input [(ngModel)]="actividadEditando.nombre"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>Fecha y Hora</ion-label>
-    <ion-input [(ngModel)]="actividadEditando.fechaHora"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>Ponente</ion-label>
-    <ion-input [(ngModel)]="actividadEditando.ponente"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>Aforo</ion-label>
-    <ion-input [(ngModel)]="actividadEditando.aforo"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>Direccion</ion-label>
-    <ion-input [(ngModel)]="actividadEditando.direccion"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>Localizacion</ion-label>
-    <ion-input [(ngModel)]="actividadEditando.localizacion"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>Foto</ion-label>
-    <ion-input [(ngModel)]="actividadEditando.foto"></ion-input>
-  </ion-item>
+<ion-content fullscreen>
+	
+	<div class="">
+		<ion-text hidden color="medium"> Id: {{id}} </ion-text>
+		<ion-item>
+			<ion-label  position="floating">Nombre</ion-label>
+			<ion-input required [(ngModel)]="document.data.nombre"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label  position="floating">Fecha</ion-label>
+			<ion-datetime required [(ngModel)]="document.data.fechaHora" displayFormat="DD/MM"></ion-datetime>
+			
+		</ion-item>
+		<ion-item>
+			<ion-label  position="floating">Ponente</ion-label>
+			<ion-input required [(ngModel)]="document.data.ponente"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label  position="floating">Aforo</ion-label>
+			<ion-input type="number" required [(ngModel)]="document.data.aforo"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label  position="floating">Direccion</ion-label>
+			<ion-input required [(ngModel)]="document.data.direccion"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label  position="floating">Localizacion</ion-label>
+			<ion-input required [(ngModel)]="document.data.localizacion"></ion-input>
+		</ion-item>
+<!-- 		<ion-item>
+			<ion-label position="floating">Tipo</ion-label>
+			<ion-select>
+				<ion-select-option value="charla">Charla</ion-select-option>
+				<ion-select-option value="taller">Taller</ion-select-option>
+				<ion-select-option value="conferencia">Conferencia</ion-select-option>
+				<ion-select-option value="Seminario">Seminario</ion-select-option>
+			</ion-select>
+		</ion-item> -->
+		<ion-item hidden>
+			<ion-label  position="floating">Foto</ion-label>
+			<ion-input required [(ngModel)]="document.data.foto"></ion-input>
+		</ion-item>
 
 
-  <ion-button (click)="clicBotonInsertar()">Añadir Actividad</ion-button>
-  <ion-button (click)="clicBotonModificar()">Modificar Actividad</ion-button>
-  <ion-button (click)="clicBotonBorrar()">Borrar Actividad</ion-button>
-</div>
+		
+		<!--
+		<ion-button *ngIf="id == 'new'" (click)="clicBotonInsertar()">Guardar (N)</ion-button>
+		<ion-button *ngIf="id != 'new'" (click)="clicBotonModificar()">Guardar (E)</ion-button>
+		<ion-button (click)="clicBotonBorrar()">Borrar</ion-button>
+		-->
+	</div>
 </ion-content>
