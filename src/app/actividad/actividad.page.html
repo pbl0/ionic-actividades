@@ -13,7 +13,7 @@
 </ion-header>
 
 <ion-content fullscreen>
-	
+
 	<div class="">
 		<ion-text hidden color="medium"> Id: {{id}} </ion-text>
 		<ion-item>
@@ -41,15 +41,15 @@
 			<ion-label  position="floating">Localizacion</ion-label>
 			<ion-input required [(ngModel)]="document.data.localizacion"></ion-input>
 		</ion-item>
-<!-- 		<ion-item>
+ 		<ion-item>
 			<ion-label position="floating">Tipo</ion-label>
-			<ion-select>
+			<ion-select required [(ngModel)]="document.data.tipo">
 				<ion-select-option value="charla">Charla</ion-select-option>
 				<ion-select-option value="taller">Taller</ion-select-option>
-				<ion-select-option value="conferencia">Conferencia</ion-select-option>
-				<ion-select-option value="Seminario">Seminario</ion-select-option>
+				<ion-select-option value="seminario">Seminario</ion-select-option>
+				<ion-select-option value="curso">Curso</ion-select-option>
 			</ion-select>
-		</ion-item> -->
+		</ion-item>
 		<ion-item hidden>
 			<ion-label  position="floating">Foto</ion-label>
 			<ion-input required [(ngModel)]="document.data.foto"></ion-input>

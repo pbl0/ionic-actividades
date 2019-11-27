@@ -9,31 +9,58 @@
 <ion-content fullscreen>
 
 
-<ion-list>
-    <ion-list-header>
-        Actividades:
-      </ion-list-header>
+  <ion-list>
 
-      <ion-item  *ngFor="let documentActividad of arrayColeccionActividades" (click)="navigateToActividad(documentActividad.id)">
-        <ion-avatar slot="start">
-          <img src="{{documentActividad.data.foto}}">
-        </ion-avatar>
-        <ion-label>
-          <h2>{{documentActividad.data.nombre}}</h2>
-          <h3>{{documentActividad.data.ponente}}</h3>
-          <p>Aforo: {{documentActividad.data.aforo}}</p>
-          <p>{{documentActividad.data.fechaHora}}</p>
-          <p>Dirección: {{documentActividad.data.direccion}} ({{documentActividad.data.localizacion}})</p>
+    <ion-item *ngFor="let documentActividad of arrayColeccionActividades"
+      (click)="navigateToActividad(documentActividad.id)">
+      <ion-avatar slot="start">
+        <ion-icon *ngIf="documentActividad.data.tipo == 'charla'" name="chatbubbles"></ion-icon>
+        <ion-icon *ngIf="documentActividad.data.tipo == 'taller'" name="hammer"></ion-icon>
+        <ion-icon *ngIf="documentActividad.data.tipo == 'seminario'" name="people"></ion-icon>
+        <ion-icon *ngIf="documentActividad.data.tipo == 'curso'" name="book"></ion-icon>
 
-        </ion-label>
-      </ion-item>
-</ion-list>
-<ion-fab vertical="bottom" horizontal="end" slot="fixed">
-  <ion-fab-button (click)="navigateToActividad('new')" color="primary">
+        
+        <!-- <img src="{{documentActividad.data.foto}}"> -->
+      </ion-avatar>
+      <ion-label>
+        <h2>{{documentActividad.data.nombre}}</h2>
+        <h3>{{documentActividad.data.ponente}}</h3>
+        <p>Aforo: {{documentActividad.data.aforo}}</p>
+        <p>{{documentActividad.data.fechaHora}}</p>
+        <!-- <p>Dirección: {{documentActividad.data.direccion}} ({{documentActividad.data.localizacion}})</p> -->
+
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="navigateToActividad('new')" color="primary">
       <ion-icon name="add"></ion-icon>
-  </ion-fab-button>
-</ion-fab>
+    </ion-fab-button>
+  </ion-fab>
 
 
 
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-button class="button-footer">
+        <ion-icon name="search"></ion-icon>
+      </ion-button>
+      <ion-button class="button-footer">
+        <ion-icon name="map"></ion-icon>
+      </ion-button>
+      <ion-button class="button-footer">
+        <ion-icon name="pizza"></ion-icon>
+      </ion-button>
+      <ion-button class="button-footer">
+        <ion-icon name="help"></ion-icon>
+      </ion-button>
+    
+      
+
+    </ion-buttons>
+  
+  </ion-toolbar>
+</ion-footer>
