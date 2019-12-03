@@ -3,6 +3,7 @@ import { ActivatedRoute } from "@angular/router";
 import { Router } from "@angular/router";
 import { Actividad } from '../actividad';
 import { FirestoreService } from '../firestore.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
 	selector: 'app-actividad',
@@ -20,7 +21,8 @@ export class ActividadPage implements OnInit {
 
 	constructor(private activatedRoute: ActivatedRoute,
 		private firestoreService: FirestoreService,
-		private router: Router) {
+		private router: Router,
+		public alertController: AlertController) {
 		this.id = this.activatedRoute.snapshot.paramMap.get("id");
 		this.firestoreService.consultarPorId("actividades", this.id).subscribe((resultado) => {
 			// Preguntar si se hay encontrado un document con ese ID
@@ -69,6 +71,108 @@ export class ActividadPage implements OnInit {
 	navigateToHome() {
 		this.router.navigate(["/"]);
 
+	}
+
+	async presentAlertConfirmInsertar() {
+		const alert = await this.alertController.create({
+			header: 'Confirmar',
+			message: '¿Quieres añadir la actividad <strong>'+ this.document.data.nombre +'</strong>?',
+			buttons: [
+				{
+					text: 'Descartar',
+					cssClass: 'secondary',
+					handler: (blah) => {
+						console.log('Confirm Cancel');
+						this.navigateToHome();
+					}
+				},
+				{
+					text: 'Cancelar',
+					role: 'cancel',
+					cssClass: 'secondary',
+					handler: (blah) => {
+						console.log('Confirm Cancel');
+					}
+				},
+				{
+					text: 'Guardar',
+					handler: () => {
+						console.log('Confirm Okay');
+						this.clicBotonInsertar();
+					}
+				}
+			]
+		});
+
+		await alert.present();
+	}
+
+	async presentAlertConfirmModificar() {
+		const alert = await this.alertController.create({
+			header: 'Confirmar',
+			message: '¿Quieres confirmar los cambios en la actividad <strong>'+ this.document.data.nombre +'</strong>?',
+			buttons: [
+				{
+					text: 'Descartar',
+					cssClass: 'secondary',
+					handler: (blah) => {
+						console.log('Confirm Cancel');
+						this.navigateToHome();
+					}
+				},
+				{
+					text: 'Cancelar',
+					role: 'cancel',
+					cssClass: 'secondary',
+					handler: (blah) => {
+						console.log('Confirm Cancel');
+					}
+				},
+				{
+					text: 'Guardar',
+					handler: () => {
+						console.log('Confirm Okay');
+						this.clicBotonModificar();
+					}
+				}
+			]
+		});
+
+		await alert.present();
+	}
+
+	async presentAlertConfirmBorrar() {
+		const alert = await this.alertController.create({
+			header: 'Confirmar',
+			message: '¿Quieres borrar la actividad <strong>'+ this.document.data.nombre +'</strong>?',
+			buttons: [
+				{
+					text: 'Descartar',
+					cssClass: 'secondary',
+					handler: (blah) => {
+						console.log('Confirm Cancel');
+						this.navigateToHome();
+					}
+				},
+				{
+					text: 'Cancelar',
+					role: 'cancel',
+					cssClass: 'secondary',
+					handler: (blah) => {
+						console.log('Confirm Cancel');
+					}
+				},
+				{
+					text: 'Guardar',
+					handler: () => {
+						console.log('Confirm Okay');
+						this.clicBotonBorrar();
+					}
+				}
+			]
+		});
+
+		await alert.present();
 	}
 
 

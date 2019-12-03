@@ -2,18 +2,20 @@
 	<ion-toolbar>
 		<ion-title>actividad</ion-title>
 		<ion-buttons slot="start">
-			<ion-button *ngIf="id == 'new'" (click)="clicBotonInsertar()"><ion-icon name="arrow-round-back"></ion-icon></ion-button>
-			<ion-button *ngIf="id != 'new'" (click)="clicBotonModificar()"><ion-icon name="arrow-round-back"></ion-icon></ion-button>
+			<ion-button *ngIf="id == 'new'" (click)="presentAlertConfirmInsertar()"><ion-icon name="arrow-round-back"></ion-icon></ion-button>
+			<ion-button *ngIf="id != 'new'" (click)="presentAlertConfirmModificar()"><ion-icon name="arrow-round-back"></ion-icon></ion-button>
 		</ion-buttons>
 		<ion-buttons slot="end">
-			<ion-button (click)="clicBotonBorrar()"><ion-icon name="trash"></ion-icon></ion-button>
+			<!-- <ion-button (click)="clicBotonBorrar()"><ion-icon name="trash"></ion-icon></ion-button> -->
+			<ion-button (click)="presentAlertConfirmBorrar()"><ion-icon name="trash"></ion-icon></ion-button>
+			
 			
 		</ion-buttons>
 	</ion-toolbar>
 </ion-header>
 
 <ion-content fullscreen>
-
+	
 	<div class="">
 		<ion-text hidden color="medium"> Id: {{id}} </ion-text>
 		<ion-item>

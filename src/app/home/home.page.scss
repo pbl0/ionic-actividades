@@ -7,3 +7,8 @@ ion-header > ion-toolbar{
     margin: auto;
 }
 
+@media (orientation: landscape){
+    .texto-boton{
+        display: none;
+    }
+}
