@@ -1,14 +1,19 @@
 ion-header > ion-toolbar{
-    --ion-background-color:#54628F;
-    color: #FB9426;
+    --ion-background-color:#2196f3;
+    color: #ffffff;
 }
 
 .button-footer{
     margin: auto;
 }
 
-@media (orientation: landscape){
+@media (orientation: portrait){
     .texto-boton{
         display: none;
     }
+}
+
+ion-icon{
+    width: 30px;
+    height: 30px;
 }

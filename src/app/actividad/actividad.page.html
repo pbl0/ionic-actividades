@@ -24,8 +24,8 @@
 		</ion-item>
 		<ion-item>
 			<ion-label  position="floating">Fecha</ion-label>
-			<ion-datetime required [(ngModel)]="document.data.fechaHora" displayFormat="DD/MM"></ion-datetime>
-			
+			<ion-datetime required [(ngModel)]="document.data.fechaHora"
+				displayFormat="DD/MM HH:mm"></ion-datetime>
 		</ion-item>
 		<ion-item>
 			<ion-label  position="floating">Ponente</ion-label>
@@ -33,15 +33,18 @@
 		</ion-item>
 		<ion-item>
 			<ion-label  position="floating">Aforo</ion-label>
-			<ion-input type="number" required [(ngModel)]="document.data.aforo"></ion-input>
+			<ion-input type="number" required [(ngModel)]="document.data.aforo">
+			</ion-input>
 		</ion-item>
 		<ion-item>
 			<ion-label  position="floating">Direccion</ion-label>
-			<ion-input required [(ngModel)]="document.data.direccion"></ion-input>
+			<ion-input required [(ngModel)]="document.data.direccion">
+			</ion-input>
 		</ion-item>
 		<ion-item>
 			<ion-label  position="floating">Localizacion</ion-label>
-			<ion-input required [(ngModel)]="document.data.localizacion"></ion-input>
+			<ion-input required [(ngModel)]="document.data.localizacion">
+			</ion-input>
 		</ion-item>
  		<ion-item>
 			<ion-label position="floating">Tipo</ion-label>
@@ -56,13 +59,5 @@
 			<ion-label  position="floating">Foto</ion-label>
 			<ion-input required [(ngModel)]="document.data.foto"></ion-input>
 		</ion-item>
-
-
-		
-		<!--
-		<ion-button *ngIf="id == 'new'" (click)="clicBotonInsertar()">Guardar (N)</ion-button>
-		<ion-button *ngIf="id != 'new'" (click)="clicBotonModificar()">Guardar (E)</ion-button>
-		<ion-button (click)="clicBotonBorrar()">Borrar</ion-button>
-		-->
 	</div>
 </ion-content>

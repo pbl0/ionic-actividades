@@ -76,7 +76,7 @@ export class ActividadPage implements OnInit {
 	async presentAlertConfirmInsertar() {
 		const alert = await this.alertController.create({
 			header: 'Confirmar',
-			message: '¿Quieres añadir la actividad <strong>'+ this.document.data.nombre +'</strong>?',
+			message: '¿Quieres crear la actividad <strong>'+ this.document.data.nombre +'</strong>?',
 			buttons: [
 				{
 					text: 'Descartar',
@@ -110,7 +110,7 @@ export class ActividadPage implements OnInit {
 	async presentAlertConfirmModificar() {
 		const alert = await this.alertController.create({
 			header: 'Confirmar',
-			message: '¿Quieres confirmar los cambios en la actividad <strong>'+ this.document.data.nombre +'</strong>?',
+			message: '¿Quieres guardar los cambios en la actividad <strong>'+ this.document.data.nombre +'</strong>?',
 			buttons: [
 				{
 					text: 'Descartar',
@@ -163,7 +163,7 @@ export class ActividadPage implements OnInit {
 					}
 				},
 				{
-					text: 'Guardar',
+					text: 'Borrar',
 					handler: () => {
 						console.log('Confirm Okay');
 						this.clicBotonBorrar();

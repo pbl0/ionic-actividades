@@ -7,27 +7,25 @@
 </ion-header>
 
 <ion-content fullscreen>
-
-
   <ion-list>
 
     <ion-item *ngFor="let documentActividad of arrayColeccionActividades"
       (click)="navigateToActividad(documentActividad.id)">
-      <ion-avatar slot="start">
-        <ion-icon *ngIf="documentActividad.data.tipo == 'charla'" name="chatbubbles"></ion-icon>
-        <ion-icon *ngIf="documentActividad.data.tipo == 'taller'" name="hammer"></ion-icon>
-        <ion-icon *ngIf="documentActividad.data.tipo == 'seminario'" name="people"></ion-icon>
-        <ion-icon *ngIf="documentActividad.data.tipo == 'curso'" name="book"></ion-icon>
-
-        
-        <!-- <img src="{{documentActividad.data.foto}}"> -->
+      <ion-avatar slot="">
+        <ion-icon class="icono" *ngIf="documentActividad.data.tipo == 'charla'"
+          name="chatbubbles" class="icono"></ion-icon>
+        <ion-icon *ngIf="documentActividad.data.tipo == 'taller'"
+          name="hammer" class="icono"></ion-icon>
+        <ion-icon *ngIf="documentActividad.data.tipo == 'seminario'"
+          name="people" class="icono"></ion-icon>
+        <ion-icon *ngIf="documentActividad.data.tipo == 'curso'"
+          name="book" class="icono"></ion-icon>
       </ion-avatar>
       <ion-label>
         <h2>{{documentActividad.data.nombre}}</h2>
         <h3>{{documentActividad.data.ponente}}</h3>
         <p>Aforo: {{documentActividad.data.aforo}}</p>
         <p>{{documentActividad.data.fechaHora}}</p>
-        <!-- <p>Dirección: {{documentActividad.data.direccion}} ({{documentActividad.data.localizacion}})</p> -->
 
       </ion-label>
     </ion-item>
@@ -37,8 +35,6 @@
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-
-
 
 </ion-content>
 
@@ -51,17 +47,17 @@
       </ion-button>
       <ion-button class="button-footer">
         <ion-icon name="map"></ion-icon>
+        <label class="texto-boton">Mapa</label>
       </ion-button>
       <ion-button class="button-footer">
         <ion-icon name="pizza"></ion-icon>
+        <label class="texto-boton">Dónde comer</label>
       </ion-button>
       <ion-button class="button-footer">
         <ion-icon name="help"></ion-icon>
+        <label class="texto-boton">Acerda de</label>
       </ion-button>
-    
-      
 
     </ion-buttons>
-  
   </ion-toolbar>
 </ion-footer>
