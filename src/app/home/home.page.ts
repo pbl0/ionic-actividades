@@ -14,7 +14,8 @@ export class HomePage {
 	actividadEditando: Actividad;
 	arrayColeccionActividades: any = [{
 		id: "",
-		data: {} as Actividad
+		data: {} as Actividad,
+
 	}];
 	idActividadSelec: string;
 
@@ -33,28 +34,29 @@ export class HomePage {
 
 	}
 
+	navigateToInfo() {
+		this.router.navigate(["/info/"]);
+
+	}
+
+	navigateToMapa() {
+		this.router.navigate(["/mapa/"]);
+
+	}
+
 	obtenerListaActividades() {
 		this.firestoreService.consultar("actividades").subscribe((resultadoConsultaActividades) => {
 			this.arrayColeccionActividades = [];
 			resultadoConsultaActividades.forEach((datosActividad: any) => {
 				this.arrayColeccionActividades.push({
 					id: datosActividad.payload.doc.id,
-					data: datosActividad.payload.doc.data()
+					data: datosActividad.payload.doc.data(),
+
+
 				});
 			})
 		});
 	}
-
-
-	clicBotonInsertar() {
-		this.firestoreService.insertar("actividades", this.actividadEditando).then(() => {
-			console.log('Actividad creada correctamente!');
-			this.actividadEditando = {} as Actividad;
-		}, (error) => {
-			console.error(error);
-		});
-	}
-
 
 	selecActividad(actividadSelec) {
 		console.log("Actividad seleccionada: ");
@@ -69,14 +71,19 @@ export class HomePage {
 		this.actividadEditando.foto = actividadSelec.data.foto;
 	}
 
-	clicBotonBorrar() {
-		this.firestoreService.borrar("actividades", this.idActividadSelec).then(() => {
-			// Actualizar la lista completa
-			this.obtenerListaActividades();
-			// Limpiar datos de pantalla
-			this.actividadEditando = {} as Actividad;
-		})
+	mostrarFechaHora(fechaHora, duracion){
+		let fechaInincial = new Date(fechaHora);
+		let horaFinal = new Date(fechaInincial.getTime() + duracion*60000);
+
+		let horaInicialStr =  fechaInincial.toLocaleDateString("es-ES",{hour: '2-digit', minute: '2-digit'});
+
+		let horaFinalStr = horaFinal.toLocaleTimeString("es-ES",{hour: '2-digit', minute: '2-digit'});
+
+		return horaInicialStr + " - " + horaFinalStr;
+
+
 	}
+
 
 }
 

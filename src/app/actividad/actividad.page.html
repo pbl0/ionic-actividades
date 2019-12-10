@@ -23,9 +23,13 @@
 			<ion-input required [(ngModel)]="document.data.nombre"></ion-input>
 		</ion-item>
 		<ion-item>
-			<ion-label  position="floating">Fecha</ion-label>
+			<ion-label  position="floating">Fecha y Hora</ion-label>
 			<ion-datetime required [(ngModel)]="document.data.fechaHora"
 				displayFormat="DD/MM HH:mm"></ion-datetime>
+		</ion-item>
+		<ion-item>
+			<ion-label  position="floating">Duración (Minutos)</ion-label>
+			<ion-input required [(ngModel)]="document.data.duracion"></ion-input>
 		</ion-item>
 		<ion-item>
 			<ion-label  position="floating">Ponente</ion-label>

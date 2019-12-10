@@ -25,7 +25,7 @@
         <h2>{{documentActividad.data.nombre}}</h2>
         <h3>{{documentActividad.data.ponente}}</h3>
         <p>Aforo: {{documentActividad.data.aforo}}</p>
-        <p>{{documentActividad.data.fechaHora}}</p>
+        <p>{{mostrarFechaHora(documentActividad.data.fechaHora, documentActividad.data.duracion)}}</p>
 
       </ion-label>
     </ion-item>
@@ -45,16 +45,16 @@
         <ion-icon name="search"></ion-icon>
         <label class="texto-boton">Buscar</label>
       </ion-button>
-      <ion-button class="button-footer">
+      <ion-button (click)="navigateToMapa()" class="button-footer">
         <ion-icon name="map"></ion-icon>
         <label class="texto-boton">Mapa</label>
       </ion-button>
-      <ion-button class="button-footer">
+      <ion-button (click)="navigateToMapa()" class="button-footer">
         <ion-icon name="pizza"></ion-icon>
         <label class="texto-boton">Dónde comer</label>
       </ion-button>
-      <ion-button class="button-footer">
-        <ion-icon name="help"></ion-icon>
+      <ion-button (click)="navigateToInfo()" class="button-footer">
+        <ion-icon name="information-circle-outline"></ion-icon>
         <label class="texto-boton">Acerda de</label>
       </ion-button>
 
