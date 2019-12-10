@@ -1,12 +1,38 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>
-      EABE 2020
-    </ion-title>
-  </ion-toolbar>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-back-button></ion-back-button>
+		</ion-buttons>
+		<ion-title>
+			Info
+		</ion-title>
+	</ion-toolbar>
 </ion-header>
 
 <ion-content>
-<p>Aplicación realizada por Pablo Barragán</p>
+	<p class="ion-margin-start ion-margin-end">Aplicación realizada por <b>Pablo Barragán Los Santos</b> para el Módulo de Desarrollo de
+		Aplicaciones para Móviles de DAW 19/20 en IES Los Remedios</p>
 </ion-content>
 
+<ion-footer>
+	<ion-toolbar>
+		<ion-buttons>
+			<ion-button (click)="navigateToMapa()" class="button-footer">
+				<ion-icon name="search"></ion-icon>
+				<label class="texto-boton">Buscar</label>
+			</ion-button>
+			<ion-button (click)="navigateToMapa()" class="button-footer">
+				<ion-icon name="map"></ion-icon>
+				<label class="texto-boton">Mapa</label>
+			</ion-button>
+			<ion-button (click)="navigateToMapa()" class="button-footer">
+				<ion-icon name="pizza"></ion-icon>
+				<label class="texto-boton">Dónde comer</label>
+			</ion-button>
+			<ion-button (click)="navigateToInfo()" class="button-footer">
+				<ion-icon name="information-circle-outline"></ion-icon>
+				<label class="texto-boton">Acerda de</label>
+			</ion-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-footer>
