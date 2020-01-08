@@ -59,9 +59,13 @@
 				<ion-select-option value="curso">Curso</ion-select-option>
 			</ion-select>
 		</ion-item>
-		<ion-item hidden>
-			<ion-label  position="floating">Foto</ion-label>
-			<ion-input required [(ngModel)]="document.data.foto"></ion-input>
-		</ion-item>
+		
+			<section>
+				<ion-button expand="block" (click)="uploadImagePicker()">Subir Foto</ion-button>
+			</section>
+			
+			
+			
+		
 	</div>
 </ion-content>
