@@ -223,6 +223,7 @@ export class ActividadPage implements OnInit {
 											.then(downloadURL => {
 												// En la variable downloadURL se tiene la dirección de descarga de la imagen
 												console.log("downloadURL:" + downloadURL);
+												this.document.data.foto = downloadURL;
 												// Mostrar el mensaje de finalización de la subida
 												toast.present();
 												// Ocultar mensaje de espera
