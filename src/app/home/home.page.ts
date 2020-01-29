@@ -3,6 +3,9 @@ import { Router } from "@angular/router";
 import { FirestoreService } from '../firestore.service';
 import { Actividad } from '../actividad';
 
+//library for social-sharing
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+
 
 @Component({
 	selector: 'app-home',
@@ -10,6 +13,7 @@ import { Actividad } from '../actividad';
 	styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+	quotes :any;
 
 	actividadEditando: Actividad;
 	arrayColeccionActividades: any = [{
@@ -19,9 +23,12 @@ export class HomePage {
 	}];
 	idActividadSelec: string;
 
+	private  apiUrl :string = "http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=10"; //api url to retrieve 10 random quotes
+
 
 	constructor(private firestoreService: FirestoreService,
-				private router: Router		
+				private router: Router,
+				private socialSharing: SocialSharing		
 		) {
 
 		// Crear una actividad vacía
