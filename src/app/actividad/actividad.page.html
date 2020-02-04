@@ -17,7 +17,7 @@
 	
 	<div class="">
 		<ion-text hidden color="medium"> Id: {{id}} </ion-text>
-		<ion-item>
+		<ion-item *ngIf="document.data.foto != undefined">
 			
 			<img width="270px" height="270px" [src]="document.data.foto"><img>
 			

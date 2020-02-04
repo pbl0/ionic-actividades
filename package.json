@@ -20,6 +20,7 @@
     "@angular/platform-browser": "~8.1.2",
     "@angular/platform-browser-dynamic": "~8.1.2",
     "@angular/router": "~8.1.2",
+    "@ionic-native/call-number": "^5.20.0",
     "@ionic-native/core": "^5.0.0",
     "@ionic-native/image-picker": "^5.19.1",
     "@ionic-native/social-sharing": "^5.20.0",

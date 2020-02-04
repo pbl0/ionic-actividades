@@ -299,6 +299,9 @@ export class ActividadPage implements OnInit {
 		this.socialSharing.shareViaWhatsApp(msg, null, null);
 	}
 
+	prueba(){
+		console.log(this.document.data.foto != undefined);
+	}
 
 
 
