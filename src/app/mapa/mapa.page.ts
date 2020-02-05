@@ -1,6 +1,6 @@
-import {Map,tileLayer,marker} from 'leaflet';
+import { Map, tileLayer, marker } from 'leaflet';
 import { Component } from '@angular/core';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'mapa',
@@ -8,24 +8,31 @@ import {Router} from '@angular/router';
   styleUrls: ['./mapa.page.scss'],
 })
 export class MapaPage {
-  map:Map;
-  newMarker:any;
-  address:string[];
-  
-  constructor(private router:Router) { }
+  map: Map;
+  newMarker: any;
+  address: string[];
+
+  constructor(private router: Router) { }
 
   // The below function is added
-  ionViewDidEnter(){
+  ionViewDidEnter() {
     this.loadMap();
   }
- // The below function is added
- loadMap(){this.map = new Map("mapId").setView([36.6772,-5.4461], 14);
- tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
- { attribution: 'Map data © <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY- SA</a>'})
- .addTo(this.map); // This line is added to add the Tile Layer to our map
-}
-goBack(){
- this.router.navigate(["home"]);
-}
+  // The below function is added
+  loadMap() {
+    this.map = new Map("mapId").setView([36.6772, -5.4461], 15);
+    tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+      { attribution: 'Map data © <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY- SA</a>' })
+      .addTo(this.map); 
+      
+      this.newMarker = marker([36.6772,-5.4461], {draggable: 
+        true}).addTo(this.map);
+  }
+  goBack() {
+    this.router.navigate(["home"]);
+  }
+
+
+
 
 }
