@@ -76,9 +76,11 @@ export class HomePage {
 	  }
 
 	navigateToActividad(id) {
-		if (this.userUID !== ""){
-			this.router.navigate(["/actividad/" + id]);
-		}
+		// if (this.userUID !== ""){
+			
+		// }
+
+		this.router.navigate(["/actividad/" + id]);
 		
 
 	}

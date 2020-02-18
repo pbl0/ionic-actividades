@@ -5,6 +5,8 @@ import { Actividad } from '../actividad';
 import { FirestoreService } from '../firestore.service';
 import { AlertController, LoadingController, ToastController } from '@ionic/angular';
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
+import { AuthService } from '../services/auth.service';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 
@@ -22,6 +24,10 @@ export class ActividadPage implements OnInit {
 		data: {} as Actividad
 	};
 
+	userEmail: String = "";
+	userUID: String = "";
+	isLogged: boolean;
+
 	constructor(private activatedRoute: ActivatedRoute,
 		private firestoreService: FirestoreService,
 		private router: Router,
@@ -29,7 +35,9 @@ export class ActividadPage implements OnInit {
 		private loadingController: LoadingController,
 		private toastController: ToastController,
 		private imagePicker: ImagePicker,
-		private socialSharing: SocialSharing
+		private socialSharing: SocialSharing,
+		private authService: AuthService,
+		public afAuth: AngularFireAuth
 	) {
 		this.id = this.activatedRoute.snapshot.paramMap.get("id");
 		this.firestoreService.consultarPorId("actividades", this.id).subscribe((resultado) => {
@@ -49,6 +57,17 @@ export class ActividadPage implements OnInit {
 	ngOnInit() {
 		// this.id = this.activatedRoute.snapshot.paramMap.get("id");
 	}
+
+	ionViewDidEnter() {
+		this.isLogged = false;
+		this.afAuth.user.subscribe(user => {
+		  if(user){
+			this.userEmail = user.email;
+			this.userUID = user.uid;
+			this.isLogged = true;
+		  }
+		})
+	  }
 
 	clicBotonBorrar() {
 		this.firestoreService.borrar("actividades", this.id).then(() => {

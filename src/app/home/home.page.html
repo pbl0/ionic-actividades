@@ -36,7 +36,8 @@
       </ion-label>
     </ion-item>
   </ion-list>
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <!-- FAB BUTTON -->
+  <ion-fab *ngIf="userUID !== ''" vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button (click)="navigateToActividad('new')" color="primary">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>

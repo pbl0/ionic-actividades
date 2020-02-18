@@ -2,13 +2,16 @@
 	<ion-toolbar>
 		<ion-title>actividad</ion-title>
 		<ion-buttons slot="start">
-			<ion-button *ngIf="id == 'new'" (click)="presentAlertConfirmInsertar()"><ion-icon name="arrow-round-back"></ion-icon></ion-button>
-			<ion-button *ngIf="id != 'new'" (click)="presentAlertConfirmModificar()"><ion-icon name="arrow-round-back"></ion-icon></ion-button>
+			
+			<ion-back-button *ngIf="userUID === ''"></ion-back-button>
+			<ion-button *ngIf="id == 'new' && userUID !== ''" (click)="presentAlertConfirmInsertar()"><ion-icon name="arrow-round-back"></ion-icon></ion-button>
+			<ion-button *ngIf="id != 'new' && userUID !== ''" (click)="presentAlertConfirmModificar()"><ion-icon name="arrow-round-back"></ion-icon></ion-button>
+			
 		</ion-buttons>
 		<ion-buttons slot="end">
 			<ion-button (click)="regularShare()"><ion-icon name="share"></ion-icon></ion-button>
 			<ion-button (click)="whatsappShare()"><ion-icon name="logo-whatsapp"></ion-icon></ion-button>
-			<ion-button (click)="presentAlertConfirmBorrar()"><ion-icon name="trash"></ion-icon></ion-button>
+			<ion-button *ngIf="userUID !== ''" (click)="presentAlertConfirmBorrar()"><ion-icon name="trash"></ion-icon></ion-button>
 		</ion-buttons>
 	</ion-toolbar>
 </ion-header>
@@ -24,39 +27,39 @@
 		</ion-item>
 		<ion-item>
 			<ion-label  position="floating">Nombre</ion-label>
-			<ion-input required [(ngModel)]="document.data.nombre"></ion-input>
+			<ion-input [disabled]="userUID === ''" required [(ngModel)]="document.data.nombre"></ion-input>
 		</ion-item>
 		<ion-item>
 			<ion-label  position="floating">Fecha y Hora</ion-label>
-			<ion-datetime required [(ngModel)]="document.data.fechaHora"
+			<ion-datetime [disabled]="userUID === ''" required [(ngModel)]="document.data.fechaHora"
 				displayFormat="DD/MM HH:mm"></ion-datetime>
 		</ion-item>
 		<ion-item>
 			<ion-label  position="floating">Duración (Minutos)</ion-label>
-			<ion-input required [(ngModel)]="document.data.duracion"></ion-input>
+			<ion-input [disabled]="userUID === ''" required [(ngModel)]="document.data.duracion"></ion-input>
 		</ion-item>
 		<ion-item>
 			<ion-label  position="floating">Ponente</ion-label>
-			<ion-input required [(ngModel)]="document.data.ponente"></ion-input>
+			<ion-input [disabled]="userUID === ''" required [(ngModel)]="document.data.ponente"></ion-input>
 		</ion-item>
 		<ion-item>
 			<ion-label  position="floating">Aforo</ion-label>
-			<ion-input type="number" required [(ngModel)]="document.data.aforo">
+			<ion-input [disabled]="userUID === ''" type="number" required [(ngModel)]="document.data.aforo">
 			</ion-input>
 		</ion-item>
 		<ion-item>
 			<ion-label  position="floating">Direccion</ion-label>
-			<ion-input required [(ngModel)]="document.data.direccion">
+			<ion-input [disabled]="userUID === ''" required [(ngModel)]="document.data.direccion">
 			</ion-input>
 		</ion-item>
 		<ion-item>
 			<ion-label  position="floating">Localizacion</ion-label>
-			<ion-input required [(ngModel)]="document.data.localizacion">
+			<ion-input [disabled]="userUID === ''" required [(ngModel)]="document.data.localizacion">
 			</ion-input>
 		</ion-item>
  		<ion-item>
 			<ion-label position="floating">Tipo</ion-label>
-			<ion-select required [(ngModel)]="document.data.tipo">
+			<ion-select [disabled]="userUID === ''" required [(ngModel)]="document.data.tipo">
 				<ion-select-option value="charla">Charla</ion-select-option>
 				<ion-select-option value="taller">Taller</ion-select-option>
 				<ion-select-option value="seminario">Seminario</ion-select-option>
@@ -66,7 +69,7 @@
 
 		
 			<section>
-				<ion-button expand="block" (click)="uploadImagePicker()">Subir Foto</ion-button>
+				<ion-button [disabled]="userUID === ''" expand="block" (click)="uploadImagePicker()">Subir Foto</ion-button>
 			</section>
 			
 			
