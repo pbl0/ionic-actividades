@@ -45,8 +45,7 @@ export class ActividadPage implements OnInit {
 			if (resultado.payload.data() != null) {
 				this.document.id = resultado.payload.id
 				this.document.data = resultado.payload.data();
-				// Como ejemplo, mostrar el nombre de la tarea en consola
-				console.log(this.document.data.nombre);
+				
 			} else {
 				// No se ha encontrado un document con ese ID. Vaciar los datos que hubiera
 				this.document.data = {} as Actividad;
@@ -100,10 +99,30 @@ export class ActividadPage implements OnInit {
 
 	}
 
-	async presentAlertConfirmInsertar() {
+	// modificar, insertar, borrar
+	async presentAlertConfirm(tipo: string) {
+		var mensaje: string;
+		var funcion: any;
+		var texto: string;
+		if(tipo == "i"){
+			mensaje = '¿Quieres crear la actividad <strong>' + this.document.data.nombre + '</strong>?';
+			// funcion	= this.clicBotonInsertar;
+			texto = 'Guardar';
+		} else if (tipo == "m"){
+			mensaje = '¿Quieres guardar los cambios en la actividad <strong>' +
+			this.document.data.nombre + '</strong>?';
+			// funcion	= this.clicBotonModificar;
+			texto = 'Guardar';
+		} else if (tipo == "b"){
+			mensaje = '¿Quieres borrar la actividad <strong>' +
+				this.document.data.nombre + '</strong>?'
+			// funcion	= this.clicBotonBorrar;
+			texto = 'Borrar';
+		}
+
 		const alert = await this.alertController.create({
 			header: 'Confirmar',
-			message: '¿Quieres crear la actividad <strong>' + this.document.data.nombre + '</strong>?',
+			message: mensaje,
 			buttons: [
 				{
 					text: 'Descartar',
@@ -122,10 +141,22 @@ export class ActividadPage implements OnInit {
 					}
 				},
 				{
-					text: 'Guardar',
+					text: texto,
 					handler: () => {
 						console.log('Confirm Okay');
-						this.clicBotonInsertar();
+						if(tipo == "i"){
+							
+							this.clicBotonInsertar();
+							
+						} else if (tipo == "m"){
+
+							funcion	= this.clicBotonModificar();
+							
+						} else if (tipo == "b"){
+
+							this.clicBotonBorrar();
+							
+						}
 					}
 				}
 			]
@@ -134,75 +165,7 @@ export class ActividadPage implements OnInit {
 		await alert.present();
 	}
 
-	async presentAlertConfirmModificar() {
-		const alert = await this.alertController.create({
-			header: 'Confirmar',
-			message: '¿Quieres guardar los cambios en la actividad <strong>' +
-				this.document.data.nombre + '</strong>?',
-			buttons: [
-				{
-					text: 'Descartar',
-					cssClass: 'secondary',
-					handler: (blah) => {
-						console.log('Confirm Cancel');
-						this.navigateToHome();
-					}
-				},
-				{
-					text: 'Cancelar',
-					role: 'cancel',
-					cssClass: 'secondary',
-					handler: (blah) => {
-						console.log('Confirm Cancel');
-					}
-				},
-				{
-					text: 'Guardar',
-					handler: () => {
-						console.log('Confirm Okay');
-						this.clicBotonModificar();
-					}
-				}
-			]
-		});
-
-		await alert.present();
-	}
-
-	async presentAlertConfirmBorrar() {
-		const alert = await this.alertController.create({
-			header: 'Confirmar',
-			message: '¿Quieres borrar la actividad <strong>' +
-				this.document.data.nombre + '</strong>?',
-			buttons: [
-				{
-					text: 'Descartar',
-					cssClass: 'secondary',
-					handler: (blah) => {
-						console.log('Confirm Cancel');
-						this.navigateToHome();
-					}
-				},
-				{
-					text: 'Cancelar',
-					role: 'cancel',
-					cssClass: 'secondary',
-					handler: (blah) => {
-						console.log('Confirm Cancel');
-					}
-				},
-				{
-					text: 'Borrar',
-					handler: () => {
-						console.log('Confirm Okay');
-						this.clicBotonBorrar();
-					}
-				}
-			]
-		});
-
-		await alert.present();
-	}
+	
 
 	async uploadImagePicker() {
 		// Mensaje de espera mientras se sube la imagen

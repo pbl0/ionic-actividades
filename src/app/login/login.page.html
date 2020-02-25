@@ -1,13 +1,13 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title>Log In</ion-title>
+    <ion-title>Iniciar Sesión</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding class="form-content">
   <form class="form" [formGroup]="validations_form" (ngSubmit)="tryLogin(validations_form.value)">
     <ion-item>
-      <ion-label position="floating" color="primary">Email</ion-label>
+      <ion-label position="floating" color="primary">Correo electronico</ion-label>
       <ion-input type="text" formControlName="email"></ion-input>
     </ion-item>
     <div class="validation-errors">
@@ -18,7 +18,7 @@
       </ng-container>
     </div>
     <ion-item>
-      <ion-label position="floating" color="primary">Password</ion-label>
+      <ion-label position="floating" color="primary">Contraseña</ion-label>
       <ion-input type="password" formControlName="password"></ion-input>
     </ion-item>
     <div class="validation-errors">
@@ -28,11 +28,11 @@
         </div>
       </ng-container>
     </div>
-    <ion-button class="submit-btn" expand="block" type="submit" [disabled]="!validations_form.valid">Log In</ion-button>
+    <ion-button class="submit-btn" expand="block" type="submit" [disabled]="!validations_form.valid">Iniciar Sesión</ion-button>
     <label class="error-message">{{errorMessage}}</label>
   </form>
   
   <p class="go-to-register">
-    No account yet? <a (click)="goRegisterPage()">Create an account.</a>
+    ¿No estás registrado? <a (click)="goRegisterPage()">Registrarse.</a>
   </p>
 </ion-content>

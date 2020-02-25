@@ -32,6 +32,11 @@ export class MapaPage {
     this.router.navigate(["home"]);
   }
 
+  navigateToInfo() {
+		this.router.navigate(["/info/"]);
+
+	}
+
 
 
 

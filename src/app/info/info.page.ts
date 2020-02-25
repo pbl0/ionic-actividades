@@ -16,8 +16,8 @@ export class InfoPage implements OnInit {
   ngOnInit() {
   }
 
-  navigateToInfo() {
-    this.router.navigate(["/info/"]);
+  navigateToHome() {
+    this.router.navigate(["/home/"]);
 
   }
 
