@@ -229,7 +229,7 @@ export class ActividadPage implements OnInit {
 
 	async deleteFile(fileURL) {
 		const toast = await this.toastController.create({
-			message: 'File was deleted successfully',
+			message: 'Actividad ha sido borrada correctamente',
 			duration: 3000
 		});
 		this.firestoreService.deleteFileFromURL(fileURL)

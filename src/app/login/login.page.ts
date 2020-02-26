@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -16,19 +17,20 @@ export class LoginPage {
 
   validation_messages = {
    'email': [
-     { type: 'required', message: 'Email is required.' },
-     { type: 'pattern', message: 'Please enter a valid email.' }
+     { type: 'required', message: 'El email es obligatorio.' },
+     { type: 'pattern', message: 'Porfavor, introduce un email valido.' }
    ],
    'password': [
-     { type: 'required', message: 'Password is required.' },
-     { type: 'minlength', message: 'Password must be at least 5 characters long.' }
+     { type: 'required', message: 'La contraseña es obligatoria.' },
+     { type: 'minlength', message: 'La contraseña debe tener al menos 5 caracteres.' }
    ]
  };
 
   constructor(
     private authService: AuthService,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private toastController: ToastController
   ) { }
 
   ngOnInit() {
@@ -44,10 +46,15 @@ export class LoginPage {
     });
   }
 
-  tryLogin(value){
+  async tryLogin(value){
+    const toast = await this.toastController.create({
+			message: 'Has iniciado sesión',
+			duration: 3000
+		});
     this.authService.doLogin(value)
     .then(res => {
       this.router.navigate(["/home"]);
+      toast.present();
     }, err => {
       this.errorMessage = err.message;
       console.log(err)
