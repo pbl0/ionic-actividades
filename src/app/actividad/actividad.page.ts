@@ -54,7 +54,7 @@ export class ActividadPage implements OnInit {
 	}
 
 	ngOnInit() {
-		// this.id = this.activatedRoute.snapshot.paramMap.get("id");
+		
 	}
 
 	ionViewDidEnter() {

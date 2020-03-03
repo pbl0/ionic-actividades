@@ -5,7 +5,10 @@
 
 			<ion-back-button *ngIf="userUID !== 'giVns0OZBsfW8IQwMHAgqi1HlIg1'">
 			</ion-back-button>
+			<!-- Boton de volver -->
+			
 			<ion-button
+			
 				*ngIf="id == 'new' && userUID === 'giVns0OZBsfW8IQwMHAgqi1HlIg1'"
 				(click)="presentAlertConfirm('i')">
 				<ion-icon name="arrow-round-back"></ion-icon>
@@ -17,6 +20,7 @@
 			</ion-button>
 
 		</ion-buttons>
+		<!-- Botones de compartir -->
 		<ion-buttons slot="end">
 
 			<ion-button (click)="whatsappShare()">
@@ -37,7 +41,7 @@
 </ion-header>
 
 <ion-content fullscreen>
-
+	<!-- Formulario -->
 	<div class="">
 		<ion-text hidden color="medium"> Id: {{id}} </ion-text>
 		<ion-item *ngIf="document.data.foto != undefined">
